@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "leaflet-geosearch@3.11.0",
+      "destination": "Scripts/leaflet-geosearch/",
+      "files": [
+        "assets/css/leaflet.css",
+        "dist/bundle.min.js",
+        "dist/geosearch.css",
+        "dist/geosearch.js",
+        "dist/geosearch.js.map",
+        "dist/geosearch.module.js",
+        "dist/geosearch.module.js.map",
+        "dist/geosearch.umd.js",
+        "dist/geosearch.umd.js.map"
+      ]
+    }
+  ]
+}
