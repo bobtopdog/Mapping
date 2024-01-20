@@ -33,13 +33,35 @@ var provider = new OpenStreetMapProvider();
 var search = new GeoSearchControl({
   provider: provider,
   style: 'bar',
-	showMarker: true,
-	retainZoomLevel: false,
+	showMarker: false,
+	retainZoomLevel: true,
   animateZoom: true
 }).addTo(map);
 	
-     
+           var newMarker = {};
+           function onMapClick(e) {
+               if (newMarker != undefined) {
+                   map.removeLayer(newMarker);
+               }
+               newMarker = L.marker(e.latlng).addTo(map)
+               document.getElementById("MainContent_TextBox1").value = e.latlng.lng + ", " + e.latlng.lat;
+               
+           }
+
+           map.on('dblclick', onMapClick);
+
+         
+           function searchEventHandler(result) {
+               console.log(result.location.label);
+               document.getElementById("MainContent_TextBox2").value = result.location.label;
+           }
+
+           map.on('geosearch/showlocation', searchEventHandler);
+
        </script>
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox><br />
+        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+
     </main>
 
 </asp:Content>
